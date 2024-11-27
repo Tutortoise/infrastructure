@@ -1,5 +1,5 @@
 provider "google" {
-  project = "bangkit-c242-ps567"
+  project = var.project_id
   region  = var.region
   zone    = var.zone
 }

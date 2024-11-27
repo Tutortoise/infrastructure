@@ -17,7 +17,7 @@ resource "google_compute_instance" "db_instance" {
     }
   }
 
-  # metadata = {
-  #   startup-script = file("./startup-script/setup_db.sh")
-  # }
+  metadata = {
+    startup-script = file("./startup-script/setup.sh")
+  }
 }
