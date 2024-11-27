@@ -6,7 +6,7 @@ resource "google_storage_bucket" "bucket" {
 
 resource "google_storage_bucket_acl" "bucket_acl" {
   bucket = google_storage_bucket.bucket.name
-  role_entity = [ 
+  role_entity = [
     "READER:allUsers",
   ]
 }
