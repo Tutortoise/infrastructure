@@ -4,9 +4,8 @@ resource "google_storage_bucket" "bucket" {
   force_destroy = true
 }
 
-resource "google_storage_bucket_acl" "bucket_acl" {
+resource "google_storage_bucket_iam_member" "all_users" {
   bucket = google_storage_bucket.bucket.name
-  role_entity = [
-    "READER:allUsers",
-  ]
+  role = "roles/storage.objectViewer"
+  member = "allUsers"
 }
