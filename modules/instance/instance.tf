@@ -1,7 +1,7 @@
 resource "google_compute_instance" "db_instance" {
   name         = "database"
   zone         = var.zone
-  machine_type = "e2-micro"
+  machine_type = "e2-custom-2-4096"
 
   boot_disk {
     initialize_params {
@@ -20,4 +20,6 @@ resource "google_compute_instance" "db_instance" {
   metadata = {
     startup-script = file("./startup-script/setup.sh")
   }
+
+  allow_stopping_for_update = true
 }
