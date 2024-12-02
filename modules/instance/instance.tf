@@ -1,8 +1,13 @@
 resource "google_compute_instance" "db_instance" {
   name         = "database"
   zone         = var.zone
-  machine_type = "e2-custom-2-4096"
+  machine_type = "e2-medium"
   tags         = ["allow-ssh", "allow-postgres"]
+
+  service_account {
+    email  = var.service_account
+    scopes = ["cloud-platform"]
+  }
 
   boot_disk {
     initialize_params {
