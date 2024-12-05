@@ -20,3 +20,10 @@ module "storage" {
   source   = "./modules/storage"
   location = var.region
 }
+
+module "tutortoise_registry" {
+  source        = "./modules/registry"
+  repository_id = "tutortoise"
+  description   = "Tutortoise's Artifact Registry"
+  location      = var.region
+}
