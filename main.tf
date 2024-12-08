@@ -1,6 +1,20 @@
-module "db-instance-sa" {
+module "service_account" {
+  for_each = tomap({
+    "db-instance-sa" : ["roles/storage.objectViewer", "roles/storage.objectCreator"],
+    "cloud-run" : ["roles/editor"] //TODO: Change this to the appropriate role
+    "cloud-build" : [
+      "roles/cloudbuild.builds.builder",
+      "roles/artifactregistry.writer",
+      "roles/run.admin",
+      "roles/serviceaccount.user",
+      "roles/logging.logWriter",
+    ],
+  })
+
   source     = "./modules/service_account"
-  account_id = "db-instance-sa"
+  project_id = var.project_id
+  account_id = each.key
+  roles      = each.value
 }
 
 module "network" {
@@ -13,7 +27,7 @@ module "instance" {
   network         = module.network.network_link
   subnet          = module.network.subnet_link
   zone            = var.zone
-  service_account = module.db-instance-sa.email
+  service_account = module.service_account["db-instance-sa"].email
 }
 
 module "storage" {

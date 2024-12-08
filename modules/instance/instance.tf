@@ -5,7 +5,7 @@ resource "google_compute_instance" "db_instance" {
   tags         = ["allow-ssh", "allow-postgres"]
 
   service_account {
-    email  = var.service_account
+    email  = var.service_account != null ? var.service_account : null
     scopes = ["cloud-platform"]
   }
 
