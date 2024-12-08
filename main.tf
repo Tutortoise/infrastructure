@@ -6,8 +6,7 @@ module "service_account" {
       "roles/cloudbuild.builds.builder",
       "roles/artifactregistry.writer",
       "roles/run.admin",
-      "roles/serviceaccount.user",
-      "roles/logging.logWriter",
+      "roles/iam.serviceAccountUser",
     ],
   })
 
