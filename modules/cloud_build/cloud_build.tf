@@ -65,3 +65,23 @@ resource "google_cloudbuild_trigger" "bilingual_abusive_detection_service_build"
     }
   }
 }
+
+resource "google_cloudbuild_trigger" "system_recommender_service_build" {
+  name            = "system-recommender-service-build"
+  description     = "Trigger to build Docker image for Tutortoise's system recommender service"
+  location        = var.location
+  service_account = var.service_account_id
+  filename        = "cloudbuild.yaml"
+
+  approval_config {
+    approval_required = false
+  }
+
+  github {
+    name  = "system-recommender-service"
+    owner = "Tutortoise"
+    push {
+      branch = "^master$"
+    }
+  }
+}
