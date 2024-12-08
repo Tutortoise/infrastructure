@@ -1,7 +1,7 @@
 module "service_account" {
   for_each = tomap({
     "db-instance-sa" : ["roles/storage.objectViewer", "roles/storage.objectCreator"],
-    "cloud-run" : ["roles/editor"] //TODO: Change this to the appropriate role
+    "cloud-run" : ["roles/editor"], // TODO: Change this to the appropriate role
     "cloud-build" : [
       "roles/cloudbuild.builds.builder",
       "roles/artifactregistry.writer",
@@ -25,7 +25,6 @@ module "instance" {
   source          = "./modules/instance"
   network         = module.network.network_link
   subnet          = module.network.subnet_link
-  zone            = var.zone
   service_account = module.service_account["db-instance-sa"].email
 }
 
@@ -39,4 +38,9 @@ module "tutortoise_registry" {
   repository_id = "tutortoise"
   description   = "Tutortoise's Artifact Registry"
   location      = var.region
+}
+
+module "cloud_build" {
+  source             = "./modules/cloud_build"
+  service_account_id = module.service_account["cloud-build"].id
 }

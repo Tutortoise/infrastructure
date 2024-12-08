@@ -1,6 +1,5 @@
 resource "google_compute_instance" "db_instance" {
   name         = "database"
-  zone         = var.zone
   machine_type = "e2-medium"
   tags         = ["allow-ssh", "allow-postgres"]
 
