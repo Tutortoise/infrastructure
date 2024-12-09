@@ -1,6 +1,10 @@
 module "service_account" {
   for_each = tomap({
-    "db-instance-sa" : ["roles/storage.objectViewer", "roles/storage.objectCreator"],
+    "db-instance-sa" : [
+      "roles/storage.objectViewer",
+      "roles/storage.objectCreator",
+      "roles/artifactregistry.reader",
+    ],
     "cloud-run" : ["roles/editor"], // TODO: Change this to the appropriate role
     "cloud-build" : [
       "roles/cloudbuild.builds.builder",
