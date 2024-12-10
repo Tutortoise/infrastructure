@@ -30,6 +30,7 @@ module "instance" {
   network         = module.network.network_link
   subnet          = module.network.subnet_link
   service_account = module.service_account["db-instance-sa"].email
+  static_ip       = module.network.static_ip_address
 }
 
 module "storage" {

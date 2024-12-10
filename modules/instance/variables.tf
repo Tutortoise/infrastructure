@@ -9,3 +9,8 @@ variable "subnet" {
 variable "service_account" {
   description = "service account to assign to the instance"
 }
+
+variable "static_ip" {
+  description = "static ip to assign to the instance"
+  default     = null
+}

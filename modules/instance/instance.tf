@@ -1,7 +1,7 @@
 resource "google_compute_instance" "db_instance" {
   name         = "database"
   machine_type = "e2-medium"
-  tags         = ["allow-ssh", "allow-postgres"]
+  tags         = ["allow-ssh", "allow-postgres", "allow-8000"]
 
   service_account {
     email  = var.service_account != null ? var.service_account : null
@@ -19,6 +19,7 @@ resource "google_compute_instance" "db_instance" {
     network    = var.network
     subnetwork = var.subnet
     access_config {
+      nat_ip = var.static_ip
     }
   }
 
