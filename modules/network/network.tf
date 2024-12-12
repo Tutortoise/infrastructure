@@ -33,7 +33,7 @@ resource "google_compute_firewall" "firewalls" {
   name          = each.key
   network       = google_compute_network.vpc_network.self_link
   target_tags   = [each.key]
-  source_ranges = !each.value.public ? [google_compute_subnetwork.vpc_subnet.ip_cidr_range] : ["0.0.0.0/0"]
+  source_ranges = each.value.public == true ? ["0.0.0.0/0"] : [google_compute_subnetwork.vpc_subnet.ip_cidr_range]
 
   allow {
     protocol = each.value.allow_protocol
