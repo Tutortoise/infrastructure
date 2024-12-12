@@ -5,7 +5,11 @@ module "service_account" {
       "roles/storage.objectCreator",
       "roles/artifactregistry.reader",
     ],
-    "cloud-run" : ["roles/editor"], // TODO: Change this to the appropriate role
+    "cloud-run" : [
+      "roles/run.invoker",
+      "roles/storage.objectUser",
+      "roles/iam.serviceAccountUser",
+    ],
     "cloud-build" : [
       "roles/cloudbuild.builds.builder",
       "roles/artifactregistry.writer",

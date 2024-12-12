@@ -19,7 +19,7 @@ resource "google_compute_firewall" "firewalls" {
       allow_ports    = ["22"]
     },
     "allow-postgres" = {
-      public         = true
+      public         = false
       allow_protocol = "tcp"
       allow_ports    = ["5432"]
     },
