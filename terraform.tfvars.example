@@ -1,2 +1,6 @@
 project_id = ""
 region = "asia-southeast2"
+
+ENV_DATABASE_URL = ""
+ENV_JWT_SECRET = ""
+ENV_FIREBASE_DATABASE_URL = ""

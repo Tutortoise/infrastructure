@@ -53,3 +53,14 @@ module "cloud_build" {
   source             = "./modules/cloud_build"
   service_account_id = module.service_account["cloud-build"].id
 }
+
+module "cloud_run" {
+  source          = "./modules/cloud_run"
+  project_id      = var.project_id
+  location        = var.region
+  service_account = module.service_account["cloud-run"].email
+
+  ENV_DATABASE_URL          = var.ENV_DATABASE_URL
+  ENV_JWT_SECRET            = var.ENV_JWT_SECRET
+  ENV_FIREBASE_DATABASE_URL = var.ENV_FIREBASE_DATABASE_URL
+}

@@ -2,8 +2,12 @@ variable "project_id" {
   description = "project id"
 }
 
-variable "region" {
-  description = "region to deploy the resources"
+variable "location" {
+  description = "location to deploy the resources"
+}
+
+variable "service_account" {
+  description = "service account email"
 }
 
 variable "ENV_DATABASE_URL" {
