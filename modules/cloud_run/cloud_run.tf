@@ -91,7 +91,7 @@ resource "google_cloud_run_service" "backend" {
         resources {
           limits = {
             "cpu"    = "1000m"
-            "memory" = "512Mi"
+            "memory" = "1Gi"
           }
         }
 
@@ -118,7 +118,7 @@ resource "google_cloud_run_service" "backend" {
         resources {
           limits = {
             "cpu"    = "1000m"
-            "memory" = "512Mi"
+            "memory" = "1Gi"
           }
         }
 
@@ -146,7 +146,7 @@ resource "google_cloud_run_service" "backend" {
         resources {
           limits = {
             "cpu"    = "1000m"
-            "memory" = "512Mi"
+            "memory" = "1Gi"
           }
         }
 
