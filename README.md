@@ -1,6 +1,6 @@
 # Infrastructure
 
-This repository contains the infrastructure-as-code (IaC) setup using **[Terraform](https://www.terraform.io/)** to provision and manage resources.
+This repository is Infrastucture as Code (IaC) of Tutortoise project. It uses **[Terraform](https://www.terraform.io/)** to provision and manage resources.
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ Create a Google Cloud Storage bucket if you don't have one already. This bucket 
 gsutil mb -p your-project-id -l asia-southeast2 gs://tutortoise-terraform
 ```
 
-## Usage
+## Usage Guide
 
 ### 1. Clone the Repository
 
